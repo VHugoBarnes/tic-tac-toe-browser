@@ -15,21 +15,23 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     </div>
 
     <table>
-      <tr id="r1">
-        <td id="r1c1"> </td>
-        <td id="r1c2"> </td>
-        <td id="r1c3"> </td>
-      </tr>
-      <tr id="r2">
-        <td id="r2c1"> </td>
-        <td id="r2c2"> </td>
-        <td id="r2c3"> </td>
-      </tr>
-      <tr id="r3">
-        <td id="r3c1"> </td>
-        <td id="r3c2"> </td>
-        <td id="r3c3"> </td>
-      </tr>
+      <tbody>
+        <tr id="r1">
+          <td id="r1c1"> </td>
+          <td id="r1c2"> </td>
+          <td id="r1c3"> </td>
+        </tr>
+        <tr id="r2">
+          <td id="r2c1"> </td>
+          <td id="r2c2"> </td>
+          <td id="r2c3"> </td>
+        </tr>
+        <tr id="r3">
+          <td id="r3c1"> </td>
+          <td id="r3c2"> </td>
+          <td id="r3c3"> </td>
+        </tr>
+      </tbody>
     </table>
   </div>
 `
