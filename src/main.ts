@@ -33,6 +33,8 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         </tr>
       </tbody>
     </table>
+
+    <button id="reset-button" style="margin-top: 30px">Reset game</button>
   </div>
 `
 
