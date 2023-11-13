@@ -37,5 +37,5 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <button id="reset-button" style="margin-top: 30px">Reset game</button>
   </div>
 `
-
+// starts the game
 ticTacToeIn(document.querySelector("table")!);

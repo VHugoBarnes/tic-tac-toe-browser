@@ -1,3 +1,18 @@
+/**
+ * gets a matrix like:
+ * [
+ *  ["x", "o", " "],
+ *  ["x", "o", " "],
+ *  ["x", "", " "],
+ * ]
+ * 
+ * and returns the transpose of the matrix:
+ * [
+ *  ["x", "x", "x"],
+ *  ["o", "o", " "],
+ *  [" ", " ", " "],
+ * ]
+ */
 export const transposeMatrix = (matrix: string[][]) => {
   const rowsLength = matrix.length;
   const colsLength = matrix[0].length;
@@ -15,6 +30,20 @@ export const transposeMatrix = (matrix: string[][]) => {
   return newMatrix;
 }
 
+/**
+ * gets a matrix like:
+ * [
+ *  ["x", "o", " "],
+ *  ["x", "o", " "],
+ *  ["x", "", "x"],
+ * ]
+ * 
+ * and gets the diagonals like this:
+ * [
+ *  ["x", "o", "x"],
+ *  [" ", "o", "x"],
+ * ]
+ */
 export const getDiagonals = (matrix: string[][]) => {
   const matrixLength = matrix.length;
   let mainDiagonal = new Array(matrixLength);

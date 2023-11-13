@@ -11,8 +11,18 @@ const BLANK_CELL = " ";
 const firstPlayer: players = players.one;
 let currentPlayer: players = firstPlayer;
 
+/**
+ * We put the tableElement outside of the bootstrap 
+ * function (ticTacToeIn) because it is used in many functions.
+ */
 let tableElement: HTMLTableElement;
 
+/**
+ * Checks on which <td> cell it was clicked
+ * to place the player character and also calls
+ * validations() function to determine if
+ * there's a winner.
+ */
 const handleClickOnTable = (ev: MouseEvent) => {
   let char = currentPlayer === players.one ? PLAYER_ONE_KEY : PLAYER_TWO_KEY;
 
@@ -21,12 +31,16 @@ const handleClickOnTable = (ev: MouseEvent) => {
   if (eventTarget instanceof HTMLTableCellElement) {
     if (eventTarget.innerHTML.trim().length) return; // <--- prevent clicking on the same cell
     eventTarget.innerHTML = char;
-    setTimeout(() => checkWinner(), 0); // <--- had to set a timeout because the innerHTML was not being rendered before this
+    setTimeout(() => validations(), 0); // <--- had to set a timeout because the innerHTML was not being rendered before this
   }
 
   currentPlayer = currentPlayer === players.one ? players.two : players.one;
 };
 
+/**
+ * Utility function to get the table rows from
+ * the table.
+ */
 const getTableRows = (): Element[] => {
   const tableBody = tableElement.children!.item(0)!;
   const tableRows: Element[] = [...tableBody.children];
@@ -34,6 +48,11 @@ const getTableRows = (): Element[] => {
   return tableRows;
 }
 
+/**
+ * resets the game by cleaning the content of the
+ * <td>'s in the table, and also the current player
+ * to start with player #1.
+ */
 const resetGame = (ev?: Event) => {
   if (ev) ev.preventDefault();
   const tableRows: Element[] = getTableRows();
@@ -49,6 +68,12 @@ const resetGame = (ev?: Event) => {
   currentPlayer = firstPlayer;
 };
 
+/**
+ * gets a matrix (array of arrays) and checks each array
+ * to see if all strings inside the array are the same,
+ * and determines who is the winner by comparing it to
+ * PLAYER_ONE_KEY or PLAYER_TWO_KEY.
+ */
 const winnerChecker = (matrix: string[][]): { winner: string } => {
   let winner = "";
   matrix.every((row: string[]) => {
@@ -66,7 +91,11 @@ const winnerChecker = (matrix: string[][]): { winner: string } => {
   return { winner: winner };
 }
 
-const checkWinner = () => {
+/**
+ * Gets the values of the cells and calls a function to 
+ * check who won.
+ */
+const validations = () => {
   let isWin = false;
   let winner: string = "";
   const tableValues: string[][] = [];
@@ -108,6 +137,9 @@ const checkWinner = () => {
   }
 };
 
+/**
+ * Function that gets exported to start the game.
+ */
 export const ticTacToeIn = (table: HTMLTableElement) => {
   tableElement = table;
   tableElement.addEventListener("click", (ev: MouseEvent) => { handleClickOnTable(ev) });
